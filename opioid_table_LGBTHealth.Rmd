@@ -17,7 +17,7 @@ source("table_opioids_1.R")
 ```
 
 
-# Table 1. Weighted Population, Percent Prevalence and Prevalence Difference of Opioid Use by Sexual Identity, Gender and Age : NSDUH 2015-2017
+Table 1. Weighted Population, Percent Prevalence and Prevalence Difference of Opioid Use by Sexual Identity, Gender and Age : NSDUH 2015-2017
 
 | Gender | Age Group | LGB n | Heterosexual n | LGB % | Heterosexual % | Prevalence Difference (95% CI) |
 |--------|---------|--------------|----------------|--------|---------|---------------------------------|
