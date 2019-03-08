@@ -1,0 +1,127 @@
+---
+output:
+  word_document:
+    fig_height: 3
+    fig_width: 5
+    reference_docx: "APA-Format-6th-Edition-Template.docx"
+bibliography: lgbthealth-citations-revised.bib
+csl: lgbt-health.csl
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(magrittr)
+```
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+source("opioid_wrangling_1.R")
+
+opioid_data<-nsduh_merged %>%
+  filter(!is.na(sexorient), !is.na(sex_d), !is.na(opinm_year_fct), !is.na(age_cat))
+
+total_n<-prettyNum(nrow(opioid_data), big.mark = ",")
+
+source("figure_surveyweighted_opioids.R")
+source("table_opioids_1.R")
+```
+
+# Lesbian, Gay, and Bisexual Adults Have Higher Prevalence of Opioid Misuse than Heterosexual Adults: Evidence from the National Study on Drug Use and Health, 2015-2017
+
+# Benjamin D. Capistrant, ScD; Ora Nakash, PhD
+
+## Author Information
+Benjamin D. Capistrant, ScD (corresponding author), School of Social Work, Smith College, Northampton, MA 01063 USA, Tel: +1-413-585-4634, Fax: +1-413-585-4634, Email: bcapistrant@smith.edu
+
+Ora Nakash, PhD, School of Social Work, Smith College, Northampton, MA 01063 USA, onakash@smith.edu
+
+
+## Running Head
+Lesbian, Gay, and Bisexual Adults' Opioid Misuse
+
+## Word Count, Number of Items
+1854/2000; 1 Table; 1 Figure
+
+## MeSH Keywords
+sexual minorities, opioid, drug use, adults, gender, prevalence
+
+###### _
+
+# Abstract
+
+_Purpose:_ To estimate prevalence difference of opioid use between lesbian, gay, bisexual (LGB) and heterosexual adults by age and gender.
+
+_Methods:_ National Study on Drug Use and Health data from 2015-2017 were used to estimate prevalence and prevalence differences of opioid use by sexual identity status, age, and gender. 
+
+_Results:_ 1.1 million LGB adults used opioids in the last 12 months (LGB adults: 9.8%; heterosexual adults: 4.24). LGB women aged <50 and men (18-25 and 50+) had significantly higher prevalence of opioid use than heterosexual counterparts.
+
+_Conclusions:_ LGB adults' high prevalence of opioid use varied by age and gender.
+
+######_
+
+# Introduction
+
+Drug overdose is now the leading cause of injury-related mortality, due in large part to the opioid epidemic.[@hedegaard_drug_2017] Recent calls to consider the economic and social determinants of the opioid epidemic highlight the role of physical and psychological trauma, social isolation and disadvantage, and despair.[@dasgupta_opioid_2018] Opioid use and its implications remain strongly patterned by age and cohort[@wall_nonmedical_2018]. Opioid use is highest among younger adults while overdose deaths are highest among middle aged adults.[@hedegaard_drug_2017] There is also evidence that the initiation of opioid use vary by age, where younger adults most likely began using prescription opioids while older adults may have used heroin first.[@novak_initiation_2015; @wall_nonmedical_2018].  Older adults, particularly those 65 years and older, use a different pattern of prescription opioid sources than younger adults, and those using physician sources have elevated rates of misuse. [@schepis_sources_2018] 
+
+Lesbian, gay, and bisexual (LGB) individuals have well-documented higher rates of drug use and dependence, [@schuler_disparities_2018] conceptualized as a coping strategy from personal and vicarious experiences of stigma, discrimination, and stress in predominantly heterosexual societies.[@meyer_prejudice_2003; @ploderl_mental_2015] Most research to date has focused on community studies among youth and documented that LGB individuals' drug use is highest among adolescents and young adults, with less information on older adults.[@schuler_disparities_2018] Notably, prevalence of drug use among LGB adults decrease with age, though, the rate of this decline varies by gender.
+
+Although sexual minority stress reflects many of the psychosocial determinants of opioid misuse, limited evidence has explored how LGB adults' high drug use operates within the current national public health emergency that opioids pose to the U.S. Building on evidence of opioid use from community based samples of sexual minority adults,[@kecojevic_initiation_2012; @palamar_nonmedical_2018; @li_prevalence_2018] recent evidence of National Study on Drug Use and Health (NSDUH) data from 2015 found LGB adults had a higher odds of opioid misuse than heterosexual counterparts.[@duncan_sexual_2019] Yet, no studies have characterized epidemiologic trends of opioid use prevalence differences by sexual identity status (LGB adults vs. heterosexual adults) across multiple age and gender groups of U.S. adults using a nationally representative sample. To address this gap in evidence of prevalence of adults' opioid use by sexual identity status, gender and age, we used data from the National Study on Drug Use and Health (NSDUH),[@center_for_behavioral_health_statistics_and_quality_2016_2017] an annual, cross-sectional survey in all 50 states, and the only federal survey that included questions about both opioid use and sexual identity. We pooled 2015-2017 data among adults aged 18+ to estimate age-and-gender stratified prevalence differences between LGB and heterosexual adults.
+
+# Methods
+
+## Sample / Population
+We used data from the National Study on Drug Use and Health (NSDUH),[@center_for_behavioral_health_statistics_and_quality_2016_2017] an annual, cross-sectional survey in all 50 states that began asking respondents about both sexual identity and opioid use in 2015. We pooled 2015-2017 data among adults aged 18+ with complete data on our variables of interest, which are described below. Our total sample size included `r total_n` individuals. This secondary data analysis of publicly available data was exempt from the Smith College Institutional Review Board review.
+
+## Measures
+The dependent variable on self-reported opioid use in the previous 12 months (yes/no). NSDUH imputed opioid use in the last year from self-reported heroin or misused prescription pain drug in the last year (raw variable: _opinmyr_). Self-reported heroin was assessed among those who reported ever using heroin; respondents were asked, "How long has it been since you last used heroin?" to which respondents reported one of the following responses "within the past 30 days; more than 30 days ago but within the past 12 months; or more than 12 months ago." Misused prescription pain medication was calculated from a respondent's self report of having used one of 10 groups of prescription pain medication in the previous 12 months (e.g., OxyContin, oxycodone, fentanyl). Of those who reported yes, respondents were asked subsequent questions of whether they had "used prescription pain relievers in any way a doctor did not direct you to use them." Participants who reported either heroin or prescription pain medication misuse in the previous 12 months were classified as misusing opioids; respondents who reported neither heroin nor prescription pain medication misuse in the previous 12 months were classified as not misusing opioids.
+
+Sexual identity was assessed from self-reported response to the interview question "Which one of the following do you consider yourself to be?" to which respondents reported lesbian or gay, bisexual, and "heterosexual, that is, straight"). Interviewers identified and reported respondent's gender as binary gender (male/female). Respondent's self-reported their date of birth, which the computer assisted data collection system used to calculate the respondent's age in years. NSDUH categorized age into 4 categories: 18-24, 25-34, 35-50, 50+. Additional data collection details are available in the NSDUH documentation.[@center_for_behavioral_health_statistics_and_quality_2016_2017]
+
+## Statistical Analysis
+NSDUH used a complex, multi-stage sampling strategy, and calculated sampling weights that generate estimates that represents the U.S. civilian, non-institutionalized population aged 12 or older. We used the _survey_ package in `R` to account for NSDUH clustered and stratified sampling design adjusted standard errors with Taylor series linearization for variance estimation.[@damico_transitioning_2009]
+
+We described the survey weighted prevalence (and 95% Confidence Intervals (CI)) of estimated opioid use in the previous 12 months by sexual identity (LGB or heterosexual) by age and gender. We estimated percent prevalence as well as the total estimated population of opioid misusers in the previous 12 months by sexual identity, age, and gender. We estimated prevalence differences in opioid use by sexual identity (prevalence among LGB adults - prevalence among heterosexual adults) in each age-and-gender group. We chose to estimate prevalence differences on the additive scale as the best reflection of the absolute magnitude of health disparities, instead of a relative scale measure, like risk or odds ratio. To estimate prevalence differences, we fit survey-adjusted generalized linear regression models with an identity link, stratified by age and gender. Statistical code for replication of these results is available at [website redacted for blinded peer-review].
+
+# Results
+In this sample, we had `r lgb_total_n` LGB adults of whom `r lgb_opioid_n` had misused opioids in the previous 12 months(unweighted % prevalence: `r lgb_opioid_pct`), and `r het_total_n` heterosexual adults of whom `r het_opioid_n` had misused opioids (unweighted % prevalence: `r het_opioid_pct`). Survey weighted analyses of percent prevalence and estimated population of individuals with opioid misuse in the previous year in the U.S. by age, gender and sexual identity are presented in Table 1. We estimated that, on average, over 1.1 million LGB adults in the U.S. used opioids in the previous year between 2015-2017 based on NSDUH survey weighted population totals (Table 1).
+
+Opioid use in the previous 12 months was more prevalent among LGB adults than heterosexual adults (Figure 1) at all ages, particularly for females. LGB women had significantly higher opioid prevalence within 18-25, 26-34, and 35-49 year olds (Table 1) than heterosexual women. LGB women 18-25 had `r f_1825_lgb_pct`% prevalence of opioid use in the previous year compared to `r f_1825_het_pct`% for heterosexual women of the same age(PD: `r f1825_pd`, 95% CI: `r f1825_pd_lci`, `r f1825_pd_uci`). Although LGB men also had higher prevalence of opioid use than heterosexual men, the differences were statistically significant only among younger (age 18-25) and older (age 50+) LGB men. `r m_ge50_lgb_pct`% of LGB men aged 50+ reported prevalent opioid use in the previous year compared to `r m_ge50_het_pct`% of heterosexual men of the same age (PD: `r mge50_pd`, 95% CI: `r mge50_pd_lci`, `r mge50_pd_uci`). 
+
+# Conclusion
+
+LGB adults have, on average, double the prevalence of opioid use in the previous 12 months than heterosexual counterparts in the U.S. This evidence extends a strong body of research of higher prevalence of drug use among LGB adults to the ongoing opioid public health epidemic. These results offer the first data about how the sexual minority health disparity of drug use operates in the ongoing opioid public health emergency in multiple age groups of adults.[@saloner_public_2018] Specifically, our results suggest LGB adults are a high-risk population for opioid use, especially for younger women and older sexual minority men.
+
+Specifically, we found younger LGB women (age<50), as well as the youngest (18-25) and oldest (50+) LGB men, had significantly higher prevalence of opioids than heterosexual counterparts of the same age and sex. 15% of sexual minority young women (18-25) reported opioid misuse in the previous 12 months. These patterns are fairly consistent with the literature on substance use, which wanes at later ages, although others have noted that the “protective” factor of age may be less pronounced for sexual minority than for heterosexual adults.[@green_substance_2012] Indeed, we showed evidence of the magnitude of prevalence decreasing with age, yet still found that sexual minority older men had significantly higher prevalence of opioid misuse in the previous 12 months than heterosexual counterparts.
+
+Future epidemiologic surveillance should consider specific sexual minority stress related risk factors and other mental health outcomes. These results are consistent with current conceptualizations about social determinants of the opioid epidemic resulting from psychological trauma of which sexual minority adults face considerable amounts across their life course. Culturally tailored services that address minority stress and are informed by trauma focused interventions should be developed to address the specific needs to LGB individuals.[@mericle_delivering_2018] Continued efforts to  enhance LGB cultural competence among specialized treatment and primary care providers should include addressing providers’ attitudes, knowledge, and skills as well as creating a welcoming and safe clinical environment for LGB.[@fredriksen-goldsen_creating_2014; @boroughs_toward_2015] Such interventions should acknowledge the impact of structural stigma that result in differential rights and opportunities for sexual minority adults compared to their heterosexual counterparts. 
+
+## Limitations
+Although we were unable to consider lesbian/gay and bisexual identities separately by gender and age due to small sample sizes, others have shown bisexual women are at particular risk for opioid use compared to heterosexual women.[@duncan_sexual_2019] Similarly, we were unable to disagregate the results further by race/ethnicity or socioeconomic status because of smaller sample of sexual minority adults, even with three years of data. We note that the measure of opioid misuse was self-reported and combined heroin or prescription misuse; it is likely that self-reported data resulted in underreporting, and thus these estimates are likely biased toward the null. Future epidemiologic surveillance should consider specific sexual minority stress related risk factors and other mental health outcomes. LGB individuals may warrant clinical screening and treatment interventions, including LGB-supportive and tailored treatment options.
+
+## Conclusions
+The results of this study of a nationally-representative dataset suggest that LGB adults have higher prevalence of opioid misuse than heterosexual adults - on average, roughly double the prevalence. The magnitude of this difference between LGB and heterosexual adults' opioid misuse in the previous year varied by age and gender. LGB women under age 50 had significantly higher opioid misuse than heterosexual women; LGB men aged 18-25 and 50+ also had higher prevalence of opioid misuse in the previous 12 months than heterosexual men. This evidence extends the well-established patterns of LGB adults' high drug use to the current U.S. opioid public health emergency. Although recent calls to consider social determinants of opioid use have not explicitly included sexual identity as one such social determinant, the psychological trauma that is posited to drive the opioid epidemic fits well with sexual minority stress models that explain LGB individuals' drug use. Our results offer new empirical evidence that sexual identity, age, and gender should be considered as important considerations to address the current opioid public health emergency. 
+
+# Acknowledgements
+
+The Substance Use and Mental Health Services Administration, part of the U.S. Department of Health and Human Services, funded and made data publically available for the National Survey on Drug Use and Health. The authors received in-kind support from the Smith College Clinical Research Institute, funded by the Brown Foundation.
+
+# Disclaimers
+
+None
+
+# Author Disclosure Statement
+
+Neither author has a conflict of interest to disclose.
+
+###### _
+
+# Figure 1.  Percent of Opioid Use in Preceding 12 Months by Sex, Age and Sexual Identity: NSDUH 2015-2017
+
+
+
+
+###### _
+
+# References
+
+

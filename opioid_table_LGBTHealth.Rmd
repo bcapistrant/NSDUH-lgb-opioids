@@ -1,0 +1,32 @@
+---
+output: word_document
+---
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(magrittr)
+```
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+source("opioid_wrangling_1.R")
+
+opioid_data<-nsduh_merged %>%
+  filter(!is.na(sexorient), !is.na(sex_d), !is.na(opinm_year_fct), !is.na(age_cat))
+
+source("table_opioids_1.R")
+```
+
+
+# Table 1. Weighted Population, Percent Prevalence and Prevalence Difference of Opioid Use by Sexual Identity, Gender and Age : NSDUH 2015-2017
+
+| Gender | Age Group | LGB n | Heterosexual n | LGB % | Heterosexual % | Prevalence Difference (95% CI) |
+|--------|---------|--------------|----------------|--------|---------|---------------------------------|
+| Female | 18-25 | `r f_1825_lgb_n` | `r f_1825_het_n` |  `r f_1825_lgb_pct` | `r f_1825_het_pct` | `r f1825_pd` (`r f1825_pd_lci`, `r f1825_pd_uci`) `r f1825_pd_p2` |
+| Female | 26-34 | `r f_2634_lgb_n` | `r f_2634_het_n` |  `r f_2634_lgb_pct` | `r f_2634_het_pct` | `r f2634_pd` (`r f2634_pd_lci`, `r f2634_pd_uci`) `r f2634_pd_p2` |
+| Female | 35-49 | `r f_3549_lgb_n` | `r f_3549_het_n` |  `r f_3549_lgb_pct` | `r f_3549_het_pct` | `r f3549_pd` (`r f3549_pd_lci`, `r f3549_pd_uci`) `r f3549_pd_p2` |
+| Female | 50+ | `r f_ge50_lgb_n` | `r f_ge50_het_n` |  `r f_ge50_lgb_pct` | `r f_ge50_het_pct` | `r fge50_pd` (`r fge50_pd_lci`, `r fge50_pd_uci`) `r fge50_pd_p2` |
+| Male | 18-25 | `r m_1825_lgb_n` | `r m_1825_het_n` |  `r m_1825_lgb_pct` | `r m_1825_het_pct` | `r m1825_pd` (`r m1825_pd_lci`, `r m1825_pd_uci`) `r m1825_pd_p2` |
+| Male | 26-34 | `r m_2634_lgb_n` | `r m_2634_het_n` |  `r m_2634_lgb_pct` | `r m_2634_het_pct` | `r m2634_pd` (`r m2634_pd_lci`, `r m2634_pd_uci`) `r m2634_pd_p2` |
+| Male | 35-49 | `r m_3549_lgb_n` | `r m_3549_het_n` |  `r m_3549_lgb_pct` | `r m_3549_het_pct` | `r m3549_pd` (`r m3549_pd_lci`, `r m3549_pd_uci`) `r m3549_pd_p2` |
+| Male | 50+ | `r m_ge50_lgb_n` | `r m_ge50_het_n` |  `r m_ge50_lgb_pct` | `r m_ge50_het_pct` | `r mge50_pd` (`r mge50_pd_lci`, `r mge50_pd_uci`) `r mge50_pd_p2` |
+| Total | All | `r t_lgb_n` | `r t_het_n` |  `r t_lgb_pct` | `r t_het_pct` | `r tot_pd` (`r tot_pd_lci`, `r tot_pd_uci`) `r tot_pd_p2` |
